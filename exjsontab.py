@@ -1,0 +1,95 @@
+#!/opt/anaconda/bin/python
+import format
+
+tabs=['0017-0512.tab',
+'0035-252.tab',
+'0135-247.tab',
+'0208-512.tab',
+'0235+164.tab',
+'0235-618.tab',
+'0238-3116.tab',
+'0250-225.tab',
+'0301-243.tab',
+'0316+0904.tab',
+'0336-01.tab',
+'0402-362.tab',
+'0413-5332.tab',
+'0422+004.tab',
+'0426-380.tab',
+'0454-234.tab',
+'0454-46.tab',
+'0458-02.tab',
+'0502+049.tab',
+'0507-6104.tab',
+'0528+134.tab',
+'0531-4827.tab',
+'0537-441.tab',
+'0617-4026.tab',
+'0630-2406.tab',
+'0637-75.tab',
+'0727-11.tab',
+'0736+01.tab',
+'0805-077.tab',
+'0816-1311.tab',
+'0818-128.tab',
+'0850-1213.tab',
+'1004-217.tab',
+'1059-1134.tab',
+'1124-186.tab',
+'1127-14.tab',
+'1144-379.tab',
+'1212+078.tab',
+'1244-255.tab',
+'1329-049.tab',
+'1335-127.tab',
+'1406-076.tab',
+'1424-41.tab',
+'1508-05.tab',
+'1510-089.tab',
+'1514-241.tab',
+'1550-242.tab',
+'1610-6649.tab',
+'1622-297.tab',
+'1717-5156.tab',
+'1730-130.tab',
+'1749+096.tab',
+'1913-3630.tab',
+'1921-1607.tab',
+'1954-388.tab',
+'1958-179.tab',
+'2052-474.tab',
+'2055-002.tab',
+'2142-75.tab',
+'2149-306.tab',
+'2155-304.tab',
+'2227-08.tab',
+'2232-488.tab',
+'2233-148.tab',
+'2240-260.tab',
+'2255-282.tab',
+'2322-409.tab',
+'2326-502.tab',
+'2331-2148.tab',
+'2345-1555.tab',
+'2345-16.tab',
+'2356-309.tab',
+'3C273.tab',
+'3C279.tab',
+'3C446.tab',
+'3C454.tab',
+'OJ287.tab',
+'CTA102.tab']
+
+#path='/var/www/html/smarts/glast/tables/'
+#pathtabs= [path+i for i in tabs]
+
+#for i in pathtabs:
+for i in tabs:
+	#print i
+	#json format
+	format.getdata(i)
+	#format.tabdelim(i)
+	#format.commadelim(i)
+	format.asciiToVOT(i)
+	format.asciiToTSV(i)
+	#format.asciiToCSV(i)
