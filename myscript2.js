@@ -6,6 +6,61 @@ $(document).ready( function(){
 	   $('#subheadtab').hide();
 	})
 
+//allows calendar pop up to select dates
+$(document).ready( function(){
+	$( ".datepicker" ).datepicker({
+		//changeMonth: true,
+		//changeYear: true
+	});
+});
+
+//
+function jdConvert(datearray){        var a = Math.floor((14 - parseFloat(datearray[0])) / 12.0);        var y = parseFloat(datearray[2]) + 4800 - a;        var m = parseFloat(datearray[0]) + 12*a - 3;        var JDN = parseFloat(datearray[1]) + Math.floor((153*m + 2) / 5.0) + 365*y + Math.floor(y/4.0) - Math.floor(y/100.0) + Math.floor(y/400.0) - 32045;    return JDN;}$(function() {    $( "#accordion" ).accordion({      collapsible: true,        active : false    });  });$(function() {    $('#jdbutton').click(function(){       var dateStartArray = $('#datestart').val().split('/');       var dateEndArray = $('#dateend').val().split('/');       var JDNstart =  jdConvert(dateStartArray);       var JDNend = jdConvert(dateEndArray);
+	if (isNaN(JDNstart) === false){       		$('#jdstart').val(JDNstart);
+	}
+	if (isNaN(JDNend) === false){       		$('#jdend').val(JDNend);
+	}    });    });
+
+//ui button to close tabs
+$(function (){
+	$('button.close').button({icons:{primary: "ui-icon-close"}});
+});
+
+$(function() {
+	$('#tableclose').click(function(){
+		$('#subheadtab').hide("fade");
+		$('div.tabs').hide("fade");
+	});
+});
+
+$(function() {
+	$('#lcclose').click(function(){
+		$('#subheadlc').hide("fade");
+		$('div.lc').hide("fade");
+	});
+});
+
+$(function() {
+	$('#cmdclose').click(function(){
+		$('#subheadcmd').hide("fade");
+		$('div.cmd').hide("fade");
+	});
+});
+
+//use this button to download data in selected format to local computer
+$(document).ready( function(){
+	$('.download').click(function(){
+		var target=$('select option:selected').text();
+		var format = $('input[name="dformat"]:checked').val();
+		if ( (target ==="Choose...") || (format ===undefined) ){
+			$('span').empty();
+			$('span').append('<p>please choose a target and a format<p>');
+		}
+		else{
+			location.href=target+'.'+format;
+		}
+	});
+})
 
 //use this button to call the light curve making function
 $(document).ready( function() {
@@ -22,7 +77,7 @@ $(document).ready( function() {
 	     $("div.lc").empty();
 	     $("h3.lc").empty();
 	     //validate the user's input
-	     if (((target==="") || (ischeck===false) ) || (target==="Choose...") ||((jdstart==="" || jdend==="") && jdallcheck===false)) {
+	     if (((target==="Choose...") || (ischeck===false) ) || (target==="Choose...") ||((jdstart==="" || jdend==="") && jdallcheck===false)) {
 		$('span').empty();
 		$('span').append('<p>please complete the form</p>');
 	     }
@@ -105,7 +160,7 @@ $(document).ready( function () {
 	$("button.txtab").click(function () {
 	     //clear out any old tables and error messages
 	     $('#tabletitle').empty();
-	     $('table').empty();
+	     $('#datatable').empty();
              $('div.text').empty()
 	     $('span').empty();
 	     //read in user input
@@ -119,10 +174,10 @@ $(document).ready( function () {
 	     var rcheck=$('input[id="checkR"]').is(':checked'), jcheck=$('input[id="checkJ"]').is(':checked');
 	     var kcheck=$('input[id="checkK"]').is(':checked'); 
 	     var jdallcheck = $('input[id="JDall"]').is(':checked');
-	     var formatcheck = $('input[type="radio"]').is(':checked');
+	     var formatcheck = $('input[name="vformat"]').is(':checked');
 	     //var jdallcheck = true;
 	     //validate the user's input
-	     if (((target==="") || (ischeck===false) ) || (target==="Choose...") || ((jdstart==="" || jdend==="") && jdallcheck===false) || formatcheck===false){
+	     if (((target==="Choose...") || (ischeck===false) ) || (target==="Choose...") || ((jdstart==="" || jdend==="") && jdallcheck===false) || formatcheck===false){
 		$('span').empty();
 		$('span').append('<p>please complete the form</p>');
 	     }// end if
@@ -136,7 +191,7 @@ $(document).ready( function () {
 	     }
 	     //if everything is okay, then make the table
 	     else {
-		var format = $('input[type="radio"]:checked').val();
+		var format = $('input[name="vformat"]:checked').val();
 		//console.log(format);
 	     	maketable(target, jdstart, jdend, jdallcheck, bcheck, vcheck, rcheck, jcheck, kcheck, format);
 	     }//end else
@@ -183,7 +238,7 @@ function maketable(target, jdstart, jdend, whole, bbool, vbool, rbool, jbool, kb
 			addtohead += "<th>Kmag</th><th>Kerr</th>";
 		     }
 		     addtohead += "</tr></thead>";
-		     $('table').append(addtohead);
+		     $('#datatable').append(addtohead);
 			//console.log(addtohead);
 		     //print the data
 		     //this is not a very efficent way of printing the data, but whatever
@@ -213,7 +268,7 @@ function maketable(target, jdstart, jdend, whole, bbool, vbool, rbool, jbool, kb
 				}
 				//alert(addtotab);
 				addtotab += "</tr>"
-				$('table').append(addtotab);
+				$('#datatable').append(addtotab);
 			}// close if
 		     }//close for
 	     }//close if html
@@ -279,6 +334,7 @@ output: an svg element that is appended to the form page. the svg contains the e
 function makeplot(target, color, jdstart, jdend, jdcheckall){
 	d3.json("tables/"+target+".json",function(data){
 		$('#subheadlc').show();
+		$('div.lc').show();
 		$("body").animate({scrollTop: $('h3.lc').offset().top}, 1000);
 		//set the data
 		if (color==="B"){
@@ -573,7 +629,8 @@ output: an svg element that is appended to the form page. the svg contains the e
 */
 function cmdplot(target, jdstart, jdend, jdcheckall){
 	d3.json("tables/"+target+".json",function(data){
-		$('#subheadcmd').show()
+		$('#subheadcmd').show();
+		$('div.cmd').show();
 		$("body").animate({scrollTop: $('h3.cmd').offset().top}, 1000);
 		var color = [], cred=[], ctime=[], blue = data.Bmag, red = data.Jmag, time= data.time;
 		//calculate the b-j color from the smarts data
@@ -610,7 +667,7 @@ function cmdplot(target, jdstart, jdend, jdcheckall){
 		//given the observation time
 		var colorscale = d3.scale.linear().domain(d3.extent(ctime));
 		colorscale.domain([0.0,0.2,0.4,0.6,0.8,1.0].map(colorscale.invert));
-		colorscale.range(["red","orange","yellow","green","blue","purple"]);
+		colorscale.range(["#f6eff7","#d0d1e6","#a6bddb", "#67a9cf", "#1c9099","#016c59"]);
 
 		var x = d3.scale.linear()
 			.domain(xdom)

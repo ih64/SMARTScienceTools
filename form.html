@@ -1,174 +1,1 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link href="mystyle.css" rel="stylesheet"></link>
-</head>
-<body>
-	
-	<div class="heading">
-		<h1>SMARTScience Tools</h1>
-	</div>
-
-	<div id="about">
-		<p>SMARTScience Tools allows you to visualize and interact with <a href="home.php">Yale-SMARTS blazar data</a>.
-		<p>Simply fill out the form below to create either light curves, a collor magnitude diagram, a table of values, or all three</p>
-	</div>
-
-     <div id="bggg">
-	<form id="dataselect" method="get">
-		<fieldset title="Select Target">
-		<legend></legend>
-		<ol>
-		<li>
-		<label for="txt-name">Select Target</label>
-			<select name="txt-name">
-<option>Choose...</option>
-<option value='0017-0512'>0017-0512</option>
-<option value='0035-252'>0035-252</option>
-<option value='0135-247'>0135-247</option>
-<option value='0208-512'>0208-512</option>
-<option value='0235+164'>0235+164</option>
-<option value='0235-618'>0235-618</option>
-<option value='0238-3116'>0238-3116</option>
-<option value='0250-225'>0250-225</option>
-<option value='0301-243'>0301-243</option>
-<option value='0316+0904'>0316+0904</option>
-<option value='0402-362'>0402-362</option>
-<option value='0413-5332'>0413-5332</option>
-<option value='0422+004'>0422+004</option>
-<option value='0426-380'>0426-380</option>
-<option value='0454-234'>0454-234</option>
-<option value='0454-46'>0454-46</option>
-<option value='0458-02'>0458-02</option>
-<option value='0502+049'>0502+049</option>
-<option value='0507-6104'>0507-6104</option>
-<option value='0528+134'>0528+134</option>
-<option value='0531-4827'>0531-4827</option>
-<option value='0537-441'>0537-441</option>
-<option value='0630-2406'>0630-2406</option>
-<option value='0637-75'>0637-75</option>
-<option value='0727-11'>0727-11</option>
-<option value='0816-1311'>0816-1311</option>
-<option value='0818-128'>0818-128</option>
-<option value='0850-1213'>0850-1213</option>
-<option value='1004-217'>1004-217</option>
-<option value='1059-1134'>1059-1134</option>
-<option value='1124-186'>1124-186</option>
-<option value='1127-14'>1127-14</option>
-<option value='1144-379'>1144-379</option>
-<option value='1212+078'>1212+078</option>
-<option value='1244-255'>1244-255</option>
-<option value='1329-049'>1329-049</option>
-<option value='1335-127'>1335-127</option>
-<option value='1406-076'>1406-076</option>
-<option value='1424-41'>1424-41</option>
-<option value='1508-05'>1508-05</option>
-<option value='1510-089'>1510-089</option>
-<option value='1514-241'>1514-241</option>
-<option value='1550-242'>1550-242</option>
-<option value='1610-6649'>1610-6649</option>
-<option value='1622-297'>1622-297</option>
-<option value='1717-5156'>1717-5156</option>
-<option value='1730-130'>1730-130</option>
-<option value='1749+096'>1749+096</option>
-<option value='1913-3630'>1913-3630</option>
-<option value='1921-1607'>1921-1607</option>
-<option value='1954-388'>1954-388</option>
-<option value='1958-179'>1958-179</option>
-<option value='2052-474'>2052-474</option>
-<option value='2055-002'>2055-002</option>
-<option value='2142-75'>2142-75</option>
-<option value='2149-306'>2149-306</option>
-<option value='2155-304'>2155-304</option>
-<option value='2227-08'>2227-08</option>
-<option value='2232-488'>2232-488</option>
-<option value='2233-148'>2233-148</option>
-<option value='2240-260'>2240-260</option>
-<option value='2255-282'>2255-282</option>
-<option value='2322-409'>2322-409</option>
-<option value='2326-502'>2326-502</option>
-<option value='2331-2148'>2331-2148</option>
-<option value='2345-1555'>2345-1555</option>
-<option value='2345-16'>2345-16</option>
-<option value='2356-309'>2356-309</option>
-<option value='3C273'>3C273</option>
-<option value='3C279'>3C279</option>
-<option value='3C446'>3C446</option>
-<option value='3C454'>3C454</option>
-<option value='OJ287'>OJ287</option>
-			</select>
-		</li>
-		</ol>
-		</fieldset>
-
-		<fieldset title="Select Date range or whole data set">
-		   <ol>
-		      <li>
-			<label for="txt-jdstart">JDstart:</label>
-			<input type="text" id="jdstart" size=10>
-			<label for="text-jdend">JDend:</label>
-			<input type="text" id="jdend" size=10><br>
-			<label for="JDall">Whole Data Set</label>
-			<input type="checkbox" id="JDall" name="JDall">
-		      </li>
-		   </ol>
-		</fieldset>
-
-		<fieldset title="Select Filters">
-		   <ol>
-                     <li>
-			<input type="checkbox" class="filtercheck" id="checkB" name="B">
-			<label for="B">B</label>
-			<input type="checkbox" class="filtercheck" id="checkV" name="V">
-			<label for="V">V</label>
-			<input type="checkbox" class="filtercheck" id="checkR" name="R">
-			<label for="R">R</label>
-			<input type="checkbox" class="filtercheck" id="checkJ" name="J">
-			<label for="J">J</label>
-			<input type="checkbox" class="filtercheck" id="checkK" name="K">
-			<label for="K">K</label>
-		      </li>
-		   </ol>
-		</fieldset>
-	<!--	<input type="submit" value="View Table"> -->
-		<fieldset title="Table Format">
-		<ol><li>
-		   <ol>
-		      <li>
-			<input id="htmlitem" type="radio" name="format" value="html">
-			<label for="htmlitem">html</label>
-		      </li>
-		      <li>
-			<input id="csvitem" type="radio" name="format" value="csv">
-			<label for="csvitem">csv</label>
-			<!--<input type="radio" name="format" value="tsv">tsv-->
-		      </li>
-		   </ol>
-		</li></ol>
-		</fieldset>
-	</form>
-<p id="submit">Submit</p>
-<span id="error" style="color:red"></span>
-<button class="txtab">View Table</button><button class="lc">View Light Curve</button><button class="cmd">View Color Magnitude Diagram</button>
-	
-</div>
-<div id="subheadlc">
- <h3 class="lc"></h3>
-</div>
- <div class="lc"></div>
-<div id="subheadcmd">
- <h3 class="cmd"></h3>
-</div>
- <div class="cmd"></div>
-<div id="subheadtab">
- <h3 id="tabletitle"></h3>
-</div>
-<div class="tabs">
- <div class="text"></div>
- <table align="center" border="1px"></table>
-</div>
- <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- <script src="myscript2.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html><head><link href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet"></link><link href="mystyle.css" rel="stylesheet"></link><link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"><link href="buttons.css" rel="stylesheet"></link><script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-38932267-3', 'auto');  ga('send', 'pageview');</script></head><body>	<div class="heading">		<h1>SMARTScience Tools</h1>	</div>	<div id="about">		<p>SMARTScience Tools allows you to visualize and interact with <a href="home.php">Yale-SMARTS blazar data</a>.		<p>Simply fill out the form below to create either light curves, a collor magnitude diagram, a table of values, or all three</p>	</div>     <div id="bggg">	<form id="dataselect" method="get">		<fieldset title="Select Target">		<legend></legend>		<ol>		<li>		<label for="txt-name">Select Target</label>			<select name="txt-name"><option>Choose...</option><option value='0017-0512'>0017-0512</option><option value='0035-252'>0035-252</option><option value='0135-247'>0135-247</option><option value='0208-512'>0208-512</option><option value='0235+164'>0235+164</option><option value='0235-618'>0235-618</option><option value='0238-3116'>0238-3116</option><option value='0250-225'>0250-225</option><option value='0301-243'>0301-243</option><option value='0316+0904'>0316+0904</option><option value='0336-01'>0336-01</option><option value='0402-362'>0402-362</option><option value='0413-5332'>0413-5332</option><option value='0422+004'>0422+004</option><option value='0426-380'>0426-380</option><option value='0454-234'>0454-234</option><option value='0454-46'>0454-46</option><option value='0458-02'>0458-02</option><option value='0502+049'>0502+049</option><option value='0507-6104'>0507-6104</option><option value='0528+134'>0528+134</option><option value='0531-4827'>0531-4827</option><option value='0537-441'>0537-441</option><option value='0617-4026'>0617-4026</option><option value='0630-2406'>0630-2406</option><option value='0637-75'>0637-75</option><option value='0727-11'>0727-11</option><option value='0736+01'>0736+01</option><option value='0805-077'>0805-077</option><option value='0816-1311'>0816-1311</option><option value='0818-128'>0818-128</option><option value='0850-1213'>0850-1213</option><option value='1004-217'>1004-217</option><option value='1059-1134'>1059-1134</option><option value='1124-186'>1124-186</option><option value='1127-14'>1127-14</option><option value='1144-379'>1144-379</option><option value='1212+078'>1212+078</option><option value='1244-255'>1244-255</option><option value='1329-049'>1329-049</option><option value='1335-127'>1335-127</option><option value='1406-076'>1406-076</option><option value='1424-41'>1424-41</option><option value='1508-05'>1508-05</option><option value='1510-089'>1510-089</option><option value='1514-241'>1514-241</option><option value='1550-242'>1550-242</option><option value='1610-6649'>1610-6649</option><option value='1622-297'>1622-297</option><option value='1717-5156'>1717-5156</option><option value='1730-130'>1730-130</option><option value='1749+096'>1749+096</option><option value='1913-3630'>1913-3630</option><option value='1921-1607'>1921-1607</option><option value='1954-388'>1954-388</option><option value='1958-179'>1958-179</option><option value='2052-474'>2052-474</option><option value='2055-002'>2055-002</option><option value='2142-75'>2142-75</option><option value='2149-306'>2149-306</option><option value='2155-304'>2155-304</option><option value='2227-08'>2227-08</option><option value='2232-488'>2232-488</option><option value='2233-148'>2233-148</option><option value='2240-260'>2240-260</option><option value='2255-282'>2255-282</option><option value='2322-409'>2322-409</option><option value='2326-502'>2326-502</option><option value='2331-2148'>2331-2148</option><option value='2345-1555'>2345-1555</option><option value='2345-16'>2345-16</option><option value='2356-309'>2356-309</option><option value='3C273'>3C273</option><option value='3C279'>3C279</option><option value='3C446'>3C446</option><option value='3C454'>3C454</option><option value='CTA102'>CTA102</option><option value='OJ287'>OJ287</option>			</select>		</li>		</ol>		</fieldset>		<fieldset title="Select Date range or whole data set">		   <ol>		      <li>			<table>			   <tr>				<!--<td><label for="txt-calstart">Calendar start:</label></td><td><input type="text" id="calstart" class="datepicker"></td>--><td><label for="txt-jdstart">JDstart:</label></td><td><input type="text" id="jdstart" size=10></td>			   </tr>			   <tr>				<!--<td><label for="text-calend">Calendar end:</label></td><td><input type="text" id="calend" class="datepicker"></td>--><td><label for="text-jdend">JDend:</label></td><td><input type="text" id="jdend" size=10></td>			   </tr>			</table><div id="accordion">  <h5 id="accordcalendar">Julian Date Converter</h5>  <div><table><tr><td class="calendarlabel">Date Start:</td><td> <input type="text" id="datestart" class="datepicker"></td></tr><tr><td class="calendarlabel">Date End:</td><td><input type="text" id="dateend" class="datepicker"></td></tr></table><button id="jdbutton" class="submit" type="button">Calculate</button><br>  </div></div>			<label for="JDall">Whole Data Set</label>			<input type="checkbox" id="JDall" name="JDall">		      </li>		   </ol>		</fieldset>		<fieldset title="Select Filters">		   <ol>                     <li>			<input type="checkbox" class="filtercheck" id="checkB" name="B">			<label for="B">B</label>			<input type="checkbox" class="filtercheck" id="checkV" name="V">			<label for="V">V</label>			<input type="checkbox" class="filtercheck" id="checkR" name="R">			<label for="R">R</label>			<input type="checkbox" class="filtercheck" id="checkJ" name="J">			<label for="J">J</label>			<input type="checkbox" class="filtercheck" id="checkK" name="K">			<label for="K">K</label>		      </li>		   </ol>		</fieldset>	<!--	<input type="submit" value="View Table"> -->		<fieldset title="Table View Format">		<ol><li>		   <ol>		      <li>			<input id="htmlitem" type="radio" name="vformat" value="html">			<label for="htmlitem">html</label>		      </li>		      <li>			<input id="csvitem" type="radio" name="vformat" value="csv">			<label for="csvitem">csv</label>			<!--<input type="radio" name="format" value="tsv">tsv-->		      </li>		   </ol>		</li></ol>		</fieldset>		<fieldset title="Table Download Format">		<ol><li>		   <ol>		      <li>			<input id="tsvfile" type="radio" name="dformat" value="tsv">			<label for="tsvfile">tsv</label>		      </li>		      <li>			<input id="csvfile" type="radio" name="dformat" value="csv">			<label for="csvfile">csv</label>		      </li>		      <li>			<input id="votfile" type="radio" name="dformat" value="vot">			<label for="votfile">vot</label>		     </li>		   </ol>		</li></ol>		</fieldset>	</form><p id="submit">Submit</p><span id="error" style="color:red"></span><button class="txtab submit">View Table</button><button class="download submit">Download Table</button><button class="lc submit">View Light Curve</button><button class="cmd submit">View Color Magnitude Diagram</button>	</div><div id="subheadlc"> <div><button class="close" id="lcclose"></button></div> <h3 class="lc"></h3></div> <div class="lc"></div><div id="subheadcmd"> <div><button class="close" id="cmdclose"></button></div> <h3 class="cmd"></h3></div> <div class="cmd"></div><div id="subheadtab"><div><button class="close" id="tableclose"></button></div> <h3 id="tabletitle"></h3></div><div class="tabs" style="padding:20px;"> <div class="text"></div> <table id="datatable" align="center" border="1px"></table></div><footer style="padding: 20px 0 30px 0; border-top:2px solid grey;color:lightgrey; font-size:12px">	<ul class="left" style="list-style:none; float:left;padding-right: 0px; padding-left: 20px">		<li style="display:inline-block;">Form and style template courtesy <a href="http://www.lynda.com/Developer-Databases-tutorials/Validating-Processing-Forms-JavaScript-PHP/120466-2.html">Ray Villalobos</a></li>	</ul>	<ul class="right" style="list-style:none; float:right; padding-left:0; padding-right: 20px">		<li style="display:inline-block">This page is powered by <a href="http://d3js.org">d3</a></li>	<ul></footer> <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script> <script src="myscript2.js"></script></body></html>
